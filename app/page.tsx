@@ -3,10 +3,11 @@
 import { useEffect, useRef } from 'react';
 import {
   FaGithub, FaLinkedin, FaEnvelope,
-  FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaJava
+  FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaJava,
+  FaGitAlt, FaHtml5, FaCss3Alt
 } from 'react-icons/fa';
 import {
-  SiPandas, SiScikitlearn, SiPostgresql, SiFlask, SiTypescript
+  SiPandas, SiScikitlearn, SiPostgresql, SiFlask, SiTypescript, SiJavascript
 } from 'react-icons/si';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -153,21 +154,34 @@ export default function PortfolioLanding() {
                 </p>
               </div>
               <div className="lg:col-span-5">
-                <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-7 space-y-4">
-                  {([
-                    ['Location', 'Chapel Hill, NC'],
-                    ['School', 'UNC Chapel Hill'],
-                    ['Major', 'CS and Statistics'],
-                    ['GPA', '3.75 / 4.0'],
-                    ['Status', 'Open to Summer 2026'],
-                  ] as const).map(([label, value]) => (
-                    <div key={label} className="flex justify-between items-center text-sm">
-                      <span className="text-[#6B7079]">{label}</span>
-                      <span className="text-white font-medium">{value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+  <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-7">
+    <h3 className="text-sm text-[#6B7079] uppercase tracking-widest mb-5">Tech Stack</h3>
+    <div className="grid grid-cols-3 gap-3">
+      {([
+        ['Python', FaPython, 'text-blue-400'],
+        ['Java', FaJava, 'text-red-500'],
+        ['JavaScript', SiJavascript, 'text-yellow-400'],
+        ['TypeScript', SiTypescript, 'text-blue-500'],
+        ['React', FaReact, 'text-cyan-400'],
+        ['Node.js', FaNodeJs, 'text-green-500'],
+        ['SQL', SiPostgresql, 'text-blue-300'],
+        ['AWS', FaAws, 'text-orange-400'],
+        ['Docker', FaDocker, 'text-blue-500'],
+        ['Git', FaGitAlt, 'text-orange-500'],
+        ['HTML', FaHtml5, 'text-orange-600'],
+        ['CSS', FaCss3Alt, 'text-blue-400'],
+      ] as const).map(([name, Icon, color]) => (
+        <div
+          key={name}
+          className="flex flex-col items-center justify-center gap-2 bg-[#1C1F24] border border-[#262A30] rounded-lg py-4 hover:border-[#3A3F47] transition-colors"
+        >
+          <Icon className={`h-7 w-7 ${color}`} />
+          <span className="text-xs text-[#A8ADB5]">{name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
             </div>
           </motion.div>
         </div>
@@ -204,7 +218,7 @@ export default function PortfolioLanding() {
               {/* NC A&T */}
               <div className="flex flex-col lg:flex-row gap-8 bg-[#15171B] border border-[#262A30] p-8 rounded-2xl items-center">
                 <div className="flex-1 text-center lg:text-left">
-                  <h3 className="text-2xl font-bold">NC A and T State University</h3>
+                  <h3 className="text-2xl font-bold">NC A&T State University</h3>
                   <p className="text-lg italic text-[#A8ADB5] mt-1">Research Intern</p>
                   <div className="mt-4 space-y-3 text-[#A8ADB5]">
                     <p>- Hit 95 percent classification accuracy detecting CAN bus cyberattacks across 5 ML models including Random Forest, KNN, SVM, and Isolation Forest</p>

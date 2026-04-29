@@ -73,10 +73,9 @@ export default function PortfolioLanding() {
           <div className="text-center lg:text-left flex-1">
             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="text-[#4B9CD3]">Anish Patel</span>
-              <span className="text-white">.</span>
             </h1>
             <p className="mt-4 text-2xl text-white">
-              Software Engineer, Student, Researcher.
+              I build things that work.
             </p>
             <div className="mt-6 flex justify-center lg:justify-start gap-5">
               <a
@@ -142,7 +141,7 @@ export default function PortfolioLanding() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-12">
-              About<span className="text-[#4B9CD3]">.</span>
+              About
             </h2>
             <div className="grid lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 space-y-5 text-[#A8ADB5] text-base leading-relaxed">

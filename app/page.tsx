@@ -171,8 +171,8 @@ useEffect(() => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-center">
               About
               </h2>
-            <div className="grid lg:grid-cols-12 gap-16 items-start">
-              <div className="lg:col-span-6 space-y-5 text-[#A8ADB5] text-base leading-relaxed">
+            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+  <div className="space-y-5 text-[#A8ADB5] text-base leading-relaxed">
                 <p>
                   I am a Computer Science and Statistics sophomore at UNC Chapel Hill. I build software, do research, and ship projects that solve real problems. Right now I am co founder of KarvBill, an AI tool that audits medical bills, and I am recruiting for summer 2026 software engineering internships.
                 </p>
@@ -180,7 +180,7 @@ useEffect(() => {
                   Outside of class I play football and chess, train boxing, and spend too much time on Rocket League. I care about writing clean code, working on hard problems, and learning fast.
                 </p>
               </div>
-              <div className="lg:col-span-6">
+              <div>
   <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-7">
     <h3 className="text-sm text-[#6B7079] uppercase tracking-widest mb-5">Tech Stack</h3>
     <div className="grid grid-cols-3 gap-3">

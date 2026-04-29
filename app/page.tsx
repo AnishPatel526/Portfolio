@@ -19,14 +19,18 @@ export default function PortfolioLanding() {
 
   // Particle canvas background
   useEffect(() => {
-  let effect: any;
-  const loadVanta = async () => {
+  let effect: { destroy: () => void } | null = null;
+  let mounted = true;
+
+  const init = async () => {
+    if (typeof window === 'undefined') return;
     const THREE = await import('three');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const WAVES: any = await import('vanta/dist/vanta.waves.min');
-    effect = WAVES.default({
+    // Make THREE available globally for vanta
+    (window as unknown as { THREE: typeof THREE }).THREE = THREE;
+    const VANTA = await import('vanta/dist/vanta.waves.min');
+    if (!mounted || !vantaRef.current) return;
+    effect = VANTA.default({
       el: vantaRef.current,
-      THREE: THREE,
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
@@ -37,8 +41,11 @@ export default function PortfolioLanding() {
       color: 0x111111,
     });
   };
-  loadVanta();
+
+  init();
+
   return () => {
+    mounted = false;
     if (effect) effect.destroy();
   };
 }, []);

@@ -1,13 +1,11 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   FaGithub, FaLinkedin, FaEnvelope,
-  FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaJava
+  FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaJava, FaDatabase
 } from 'react-icons/fa';
-import {
-  SiPandas, SiScikitlearn, SiPostgresql, SiFlask, SiTypescript
-} from 'react-icons/si';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Chatbot from './modules/chatbot';
@@ -112,19 +110,19 @@ export default function PortfolioLanding() {
 
   // Section animations
   const aboutControls = useAnimation();
-  const [aboutRef, aboutInView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.2, triggerOnce: true });
   useEffect(() => {
     if (aboutInView) aboutControls.start({ opacity: 1, y: 0 });
   }, [aboutInView, aboutControls]);
 
   const expControls = useAnimation();
-  const [expRef, expInView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const { ref: expRef, inView: expInView } = useInView({ threshold: 0.2, triggerOnce: true });
   useEffect(() => {
     if (expInView) expControls.start({ opacity: 1, y: 0 });
   }, [expInView, expControls]);
 
   const projectControls = useAnimation();
-  const [projectRef, projectInView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const { ref: projectRef, inView: projectInView } = useInView({ threshold: 0.2, triggerOnce: true });
   useEffect(() => {
     if (projectInView) projectControls.start({ opacity: 1, y: 0 });
   }, [projectInView, projectControls]);
@@ -182,11 +180,14 @@ export default function PortfolioLanding() {
           </div>
 
           {/* Right Side - Headshot */}
-          <div className="flex justify-center border-[#4B9CD3] rounded-full border-[6px]">
-            <img
+          <div className="flex justify-center border-[#4B9CD3] rounded-full border-[6px] overflow-hidden">
+            <Image
               src="/headshot.jpg"
               alt="Anish Patel"
+              width={288}
+              height={288}
               className="w-72 h-72 rounded-full object-cover"
+              priority
             />
           </div>
         </div>
@@ -341,12 +342,11 @@ export default function PortfolioLanding() {
                   <div className="flex gap-3 mb-4">
                     <FaPython className="h-6 w-6 text-blue-400" title="Python" />
                     <FaAws className="h-6 w-6 text-orange-400" title="AWS" />
-                    <SiPandas className="h-6 w-6 text-white" title="Pandas" />
-                    <SiScikitlearn className="h-6 w-6 text-orange-500" title="scikit-learn" />
                     <FaDocker className="h-6 w-6 text-blue-500" title="Docker" />
+                    <FaDatabase className="h-6 w-6 text-gray-300" title="Data" />
                   </div>
                   <div className="flex gap-4 text-[#4B9CD3]">
-                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" title="GitHub Repo" aria-label="KarvBill GitHub">
+                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="KarvBill GitHub">
                       <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
                     </a>
                   </div>
@@ -372,10 +372,10 @@ export default function PortfolioLanding() {
                     <FaReact className="h-6 w-6 text-cyan-400" title="React" />
                     <FaNodeJs className="h-6 w-6 text-green-500" title="Node.js" />
                     <FaPython className="h-6 w-6 text-blue-400" title="Python" />
-                    <SiPostgresql className="h-6 w-6 text-blue-300" title="PostgreSQL" />
+                    <FaDatabase className="h-6 w-6 text-blue-300" title="PostgreSQL" />
                   </div>
                   <div className="flex gap-4 text-[#4B9CD3]">
-                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" title="GitHub Repo" aria-label="SideLine GitHub">
+                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="SideLine GitHub">
                       <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
                     </a>
                   </div>
@@ -399,12 +399,11 @@ export default function PortfolioLanding() {
                 <div className="mt-6">
                   <div className="flex gap-3 mb-4">
                     <FaPython className="h-6 w-6 text-blue-400" title="Python" />
-                    <SiFlask className="h-6 w-6 text-white" title="Flask" />
                     <FaReact className="h-6 w-6 text-cyan-400" title="React" />
-                    <SiTypescript className="h-6 w-6 text-blue-500" title="TypeScript" />
+                    <FaJava className="h-6 w-6 text-red-500" title="Java" />
                   </div>
                   <div className="flex gap-4 text-[#4B9CD3]">
-                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" title="GitHub Repo" aria-label="CodeScan GitHub">
+                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="CodeScan GitHub">
                       <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
                     </a>
                   </div>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import Navbar from "./modules/navbar";
 
 export const metadata: Metadata = {
   title: "Anish Patel",
-  description: "Software Engineer, Student, Researcher",
+  description: "I build things that work.",
 };
 
 export default function RootLayout({
@@ -35,6 +36,7 @@ export default function RootLayout({
         />
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );

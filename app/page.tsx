@@ -174,10 +174,10 @@ useEffect(() => {
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
   <div className="space-y-5 text-[#A8ADB5] text-base leading-relaxed">
                 <p>
-                  I am a Computer Science and Statistics sophomore at UNC Chapel Hill. I build software, do research, and ship projects that solve real problems. Right now I am co founder of KarvBill, an AI tool that audits medical bills, and I am recruiting for summer 2026 software engineering internships.
+                  Hi! I am a student at the University of North Carolina at Chapel Hill double majoring in Computer Science and Statistics and Analytics. I have a passion for software engineering, doing research, and building meaningful projects. I enjoy working across the stack, from designing backend systems and APIs to building data pipelines and integrating machine learning models. Most of my work is centered around solving practical problems, whether that is improving system performance, analyzing real-world data, or creating tools that are actually useful outside of a classroom setting.
                 </p>
                 <p>
-                  Outside of class I play football and chess, train boxing, and spend too much time on Rocket League. I care about writing clean code, working on hard problems, and learning fast.
+                  Outside of class, I spend a lot of time staying active and competitive. I play football and chess, train boxing, and probably spend more time than I should on Rocket League.I like building things that actually work, figuring out hard problems, and getting better every time I sit down to code.
                 </p>
               </div>
               <div>

@@ -44,6 +44,19 @@ export default function PortfolioLanding() {
   };
 }, []);
 
+useEffect(() => {
+  const handleScroll = () => {
+    const dim = document.getElementById('bg-dim');
+    if (!dim) return;
+    const heroHeight = window.innerHeight;
+    const scrolled = window.scrollY;
+    const opacity = Math.min(scrolled / heroHeight, 0.6);
+    dim.style.setProperty('--bg-dim', String(opacity));
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
   // Section animations
   const aboutControls = useAnimation();
   const [aboutRef, aboutInView] = useInView({ threshold: 0.2, triggerOnce: true });
@@ -66,18 +79,26 @@ export default function PortfolioLanding() {
   return (
     <>
       {/* Particle background */}
-      <div
+<div
   ref={vantaRef}
   className="fixed inset-0 z-0"
   style={{ width: '100vw', height: '100vh' }}
   aria-hidden="true"
 />
 
+{/* Dim overlay */}
+<div
+  id="bg-dim"
+  className="fixed inset-0 z-[1] pointer-events-none transition-opacity duration-500"
+  style={{ background: '#0A0B0D', opacity: 'var(--bg-dim, 0)' }}
+  aria-hidden="true"
+/>
+
       {/* Hero */}
       <main className="relative z-10 isolate px-6 lg:px-8">
-        <div id="home" className="mx-auto h-screen flex flex-col lg:flex-row justify-center items-center gap-12 max-w-7xl">
+        <div id="home" className="mx-auto h-screen flex flex-col lg:flex-row justify-center items-center gap-4 max-w-5xl">
           {/* Left Side */}
-          <div className="text-center lg:text-left flex-1">
+          <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="text-[#4B9CD3]">Anish Patel</span>
             </h1>
@@ -147,11 +168,11 @@ export default function PortfolioLanding() {
             animate={aboutControls}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-center">
               About
-            </h2>
-            <div className="grid lg:grid-cols-12 gap-10">
-              <div className="lg:col-span-7 space-y-5 text-[#A8ADB5] text-base leading-relaxed">
+              </h2>
+            <div className="grid lg:grid-cols-12 gap-16 items-start">
+              <div className="lg:col-span-6 space-y-5 text-[#A8ADB5] text-base leading-relaxed">
                 <p>
                   I am a Computer Science and Statistics sophomore at UNC Chapel Hill. I build software, do research, and ship projects that solve real problems. Right now I am co founder of KarvBill, an AI tool that audits medical bills, and I am recruiting for summer 2026 software engineering internships.
                 </p>
@@ -159,7 +180,7 @@ export default function PortfolioLanding() {
                   Outside of class I play football and chess, train boxing, and spend too much time on Rocket League. I care about writing clean code, working on hard problems, and learning fast.
                 </p>
               </div>
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-6">
   <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-7">
     <h3 className="text-sm text-[#6B7079] uppercase tracking-widest mb-5">Tech Stack</h3>
     <div className="grid grid-cols-3 gap-3">
@@ -211,7 +232,7 @@ export default function PortfolioLanding() {
                   <h3 className="text-2xl font-bold">Sports Media Inc.</h3>
                   <p className="text-lg italic text-[#A8ADB5] mt-1">Software Engineering Intern</p>
                   <div className="mt-4 space-y-3 text-[#A8ADB5]">
-                    <p>- Built a token based authentication system in Python and Java that increased login success by 30 percent and reduced reported issues by 25 percent</p>
+                    <p>- Built a token based authentication system in Python and Java that increased login success by 30% and reduced reported issues by 25%</p>
                     <p>- Cut page load times by 1.2 seconds by optimizing API calls and shipping mobile first updates across the platform</p>
                     <p>- Deployed features to over 5,000 accounts working with a team of 5 engineers in Agile sprints</p>
                   </div>
@@ -227,8 +248,8 @@ export default function PortfolioLanding() {
                   <h3 className="text-2xl font-bold">NC A&T State University</h3>
                   <p className="text-lg italic text-[#A8ADB5] mt-1">Research Intern</p>
                   <div className="mt-4 space-y-3 text-[#A8ADB5]">
-                    <p>- Hit 95 percent classification accuracy detecting CAN bus cyberattacks across 5 ML models including Random Forest, KNN, SVM, and Isolation Forest</p>
-                    <p>- Boosted detection performance by 20 percent through feature engineering and cross validation pipelines</p>
+                    <p>- Achieved 95% classification accuracy detecting CAN bus cyberattacks across 5 ML models including Random Forest, KNN, SVM, and Isolation Forest</p>
+                    <p>- Boosted detection performance by 20% through feature engineering and cross validation pipelines</p>
                     <p>- Co authored a peer reviewed paper presented at the 2024 icABCD Conference on automotive cybersecurity</p>
                   </div>
                 </div>
@@ -243,9 +264,9 @@ export default function PortfolioLanding() {
                   <h3 className="text-2xl font-bold">UNC School of Dentistry</h3>
                   <p className="text-lg italic text-[#A8ADB5] mt-1">Computer Support Technician</p>
                   <div className="mt-4 space-y-3 text-[#A8ADB5]">
-                    <p>- 90 percent first contact resolution rate across 150 plus faculty, staff, and students</p>
-                    <p>- Reduced new user downtime by 35 percent by completing 100 plus hardware and software setups</p>
-                    <p>- Led onboarding sessions for 50 plus users on personal and university issued devices</p>
+                    <p>- 90% first contact resolution rate across 150 plus faculty, staff, and students</p>
+                    <p>- Reduced new user downtime by 35% by completing 100 plus hardware and software setups</p>
+                    <p>- Led onboarding sessions for 50+ users on personal and university issued devices</p>
                   </div>
                 </div>
                 <div className="w-48 h-32 rounded-lg border border-[#262A30] flex items-center justify-center text-[#A8ADB5] font-medium text-sm flex-shrink-0">

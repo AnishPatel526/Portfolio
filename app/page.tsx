@@ -237,9 +237,9 @@ useEffect(() => {
                     <p>- Deployed features to over 5,000 accounts working with a team of 5 engineers in Agile sprints</p>
                   </div>
                 </div>
-                <div className="w-48 h-32 rounded-lg border border-[#262A30] flex items-center justify-center text-[#A8ADB5] font-medium text-sm flex-shrink-0">
-                  Sports Media Inc.
-                </div>
+                <div className="w-48 h-32 rounded-lg bg-white p-3 flex items-center justify-center flex-shrink-0">
+  <img src="/sportsmedia.png" alt="Sports Media Inc." className="max-h-full max-w-full object-contain" />
+</div>
               </div>
 
               {/* NC A&T */}
@@ -253,9 +253,9 @@ useEffect(() => {
                     <p>- Co authored a peer reviewed paper presented at the 2024 icABCD Conference on automotive cybersecurity</p>
                   </div>
                 </div>
-                <div className="w-48 h-32 rounded-lg border border-[#262A30] flex items-center justify-center text-[#A8ADB5] font-medium text-sm flex-shrink-0">
-                  NC A&T
-                </div>
+                <div className="w-48 h-32 rounded-lg bg-white p-3 flex items-center justify-center flex-shrink-0">
+  <img src="/ncat.png" alt="NC A&T State University" className="max-h-full max-w-full object-contain" />
+</div>
               </div>
 
               {/* UNC Dentistry */}
@@ -269,9 +269,9 @@ useEffect(() => {
                     <p>- Led onboarding sessions for 50+ users on personal and university issued devices</p>
                   </div>
                 </div>
-                <div className="w-48 h-32 rounded-lg border border-[#262A30] flex items-center justify-center text-[#A8ADB5] font-medium text-sm flex-shrink-0">
-                  UNC Dentistry
-                </div>
+                <div className="w-48 h-32 rounded-lg bg-[#4B9CD3] p-3 flex items-center justify-center flex-shrink-0">
+  <img src="/uncdentistry.jpg" alt="UNC School of Dentistry" className="max-h-full max-w-full object-contain rounded" />
+</div>
               </div>
 
             </div>

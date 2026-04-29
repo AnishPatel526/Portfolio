@@ -72,7 +72,12 @@ export default function PortfolioLanding() {
   return (
     <>
       {/* Particle background */}
-      <div ref={vantaRef} className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true" />
+      <div
+  ref={vantaRef}
+  className="fixed inset-0 z-0"
+  style={{ width: '100vw', height: '100vh' }}
+  aria-hidden="true"
+/>
 
       {/* Hero */}
       <main className="relative z-10 isolate px-6 lg:px-8">

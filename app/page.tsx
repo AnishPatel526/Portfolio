@@ -13,102 +13,34 @@ import { useInView } from 'react-intersection-observer';
 import Chatbot from './modules/chatbot';
 
 export default function PortfolioLanding() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const vantaRef = useRef<HTMLDivElement | null>(null);
+  const vantaEffect = useRef<any>(null);
 
   // Particle canvas background
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particleCount = Math.min(140, Math.floor(window.innerWidth / 14));
-    const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      radius: 0.8 + Math.random() * 1.2,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // soft mouse glow in carolina blue
-      const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
-      gradient.addColorStop(0, 'rgba(75, 156, 211, 0.12)');
-      gradient.addColorStop(1, 'rgba(75, 156, 211, 0)');
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, 150, 0, Math.PI * 2);
-      ctx.fill();
-
-      // particles
-      particles.forEach((p) => {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
-        ctx.fill();
-      });
-
-      // connecting lines
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 130) {
-            const opacity = (1 - dist / 130) * 0.18;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.lineWidth = 1;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-    };
-
-    const update = () => {
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-      });
-    };
-
-    const animate = () => {
-      draw();
-      update();
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, []);
+  let effect: any;
+  const loadVanta = async () => {
+    const THREE = await import('three');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const WAVES: any = await import('vanta/dist/vanta.waves.min');
+    effect = WAVES.default({
+      el: vantaRef.current,
+      THREE: THREE,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200,
+      minWidth: 200,
+      scale: 1,
+      scaleMobile: 1,
+      color: 0x111111,
+    });
+  };
+  loadVanta();
+  return () => {
+    if (effect) effect.destroy();
+  };
+}, []);
 
   // Section animations
   const aboutControls = useAnimation();
@@ -132,11 +64,7 @@ export default function PortfolioLanding() {
   return (
     <>
       {/* Particle background */}
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 z-0 pointer-events-none"
-        aria-hidden="true"
-      />
+      <div ref={vantaRef} className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true" />
 
       {/* Hero */}
       <main className="relative z-10 isolate px-6 lg:px-8">
@@ -424,7 +352,7 @@ export default function PortfolioLanding() {
             <div className="flex flex-col items-center justify-center text-center flex-1">
               <h2 className="text-5xl font-bold mb-8">Resume</h2>
               <a
-                href="/AnishPatel_Resume.pdf"
+                href="/AnishP_Resume.pdf"
                 download
                 className="inline-block rounded-md border border-[#4B9CD3] px-5 py-2.5 text-lg font-bold text-[#4B9CD3] hover:bg-[#4B9CD3] hover:text-white transition-colors"
               >
@@ -435,7 +363,7 @@ export default function PortfolioLanding() {
             <div className="flex-1 w-full max-w-3xl">
               <div className="w-full h-[80vh] border border-[#262A30] rounded-md overflow-hidden bg-white">
                 <iframe
-                  src="/AnishPatel_Resume.pdf"
+                  src="/AnishP_Resume.pdf"
                   className="w-full h-full"
                   title="Anish Patel Resume Preview"
                 />

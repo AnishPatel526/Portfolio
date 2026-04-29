@@ -19,34 +19,28 @@ export default function PortfolioLanding() {
 
   // Particle canvas background
   useEffect(() => {
-  let effect: { destroy: () => void } | null = null;
-  let mounted = true;
+  if (typeof window === 'undefined') return;
+  const w = window as unknown as { VANTA?: { WAVES: (opts: object) => { destroy: () => void } } };
+  if (!w.VANTA || !vantaRef.current) return;
 
-  const init = async () => {
-    if (typeof window === 'undefined') return;
-    const THREE = await import('three');
-    // Make THREE available globally for vanta
-    (window as unknown as { THREE: typeof THREE }).THREE = THREE;
-    const VANTA = await import('vanta/dist/vanta.waves.min');
-    if (!mounted || !vantaRef.current) return;
-    effect = VANTA.default({
-      el: vantaRef.current,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
-      scale: 1,
-      scaleMobile: 1,
-      color: 0x111111,
-    });
-  };
-
-  init();
+  const effect = w.VANTA.WAVES({
+    el: vantaRef.current,
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200,
+    minWidth: 200,
+    scale: 1,
+    scaleMobile: 1,
+    color: 0x111111,
+    shininess: 30,
+    waveHeight: 15,
+    waveSpeed: 1,
+    zoom: 1,
+  });
 
   return () => {
-    mounted = false;
-    if (effect) effect.destroy();
+    effect.destroy();
   };
 }, []);
 
@@ -363,6 +357,62 @@ export default function PortfolioLanding() {
                   </div>
                 </div>
               </div>
+
+              {/* FairShare */}
+<div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
+  <div>
+    <h3 className="text-xl font-bold mb-3">FairShare</h3>
+    <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
+      Full stack platform that calculates optimized payment splits across any group size. Eliminates manual balance tracking with an O(n) debt resolution algorithm.
+    </p>
+    <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
+      <li>Built with React, Node.js, Express, REST APIs</li>
+      <li>O(n) debt resolution algorithm for instant payment splits</li>
+      <li>Modular React interface with 10 plus reusable components</li>
+      <li>Standardized UI consistency across all devices</li>
+    </ul>
+  </div>
+  <div className="mt-6">
+    <div className="flex gap-3 mb-4">
+      <FaReact className="h-6 w-6 text-cyan-400" title="React" />
+      <FaNodeJs className="h-6 w-6 text-green-500" title="Node.js" />
+      <SiJavascript className="h-6 w-6 text-yellow-400" title="JavaScript" />
+    </div>
+    <div className="flex gap-4 text-[#4B9CD3]">
+      <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="FairShare GitHub">
+        <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
+      </a>
+    </div>
+  </div>
+</div>
+
+{/* SyncBoard */}
+<div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
+  <div>
+    <h3 className="text-xl font-bold mb-3">SyncBoard</h3>
+    <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
+      Real time collaborative task management platform. Reduced sync latency from seconds to milliseconds for concurrent users with WebSocket based updates.
+    </p>
+    <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
+      <li>Built with React, Node.js, WebSockets, Google Calendar API</li>
+      <li>Real time updates across collaborative task management</li>
+      <li>Google Calendar API integration syncs 100 percent of deadlines</li>
+      <li>5 plus core collaboration features including shared notes</li>
+    </ul>
+  </div>
+  <div className="mt-6">
+    <div className="flex gap-3 mb-4">
+      <FaReact className="h-6 w-6 text-cyan-400" title="React" />
+      <FaNodeJs className="h-6 w-6 text-green-500" title="Node.js" />
+      <SiJavascript className="h-6 w-6 text-yellow-400" title="JavaScript" />
+    </div>
+    <div className="flex gap-4 text-[#4B9CD3]">
+      <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="SyncBoard GitHub">
+        <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
+      </a>
+    </div>
+  </div>
+</div>
 
             </div>
           </motion.div>

@@ -99,7 +99,7 @@ useEffect(() => {
         <div id="home" className="mx-auto h-screen flex flex-col lg:flex-row justify-center items-center gap-4 max-w-5xl">
           {/* Left Side */}
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="font-display text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="text-[#4B9CD3]">Anish Patel</span>
             </h1>
             <p className="mt-4 text-2xl text-white">
@@ -168,7 +168,7 @@ useEffect(() => {
             animate={aboutControls}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-center">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-12 text-center">
               About
               </h2>
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
@@ -223,7 +223,7 @@ useEffect(() => {
             animate={expControls}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-center">Featured Experiences</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-12 text-center">Featured Experiences</h2>
             <div className="space-y-6">
 
               {/* Sports Media Inc */}
@@ -288,7 +288,7 @@ useEffect(() => {
             animate={projectControls}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-center">Featured Projects</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-12 text-center">Featured Projects</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
               {/* KarvBill */}
@@ -446,7 +446,7 @@ useEffect(() => {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             {/* Left: Title + Button */}
             <div className="flex flex-col items-center justify-center text-center flex-1">
-              <h2 className="text-5xl font-bold mb-8">Resume</h2>
+              <h2 className="font-display text-5xl font-bold mb-8">Resume</h2>
               <a
                 href="/AnishP_Resume.pdf"
                 download

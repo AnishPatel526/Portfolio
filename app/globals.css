@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -16,7 +22,6 @@ html {
   --border-strong: #3A3F47;
   --text-muted: #A8ADB5;
   --text-subtle: #6B7079;
-  --font-sans: 'Inter', sans-serif;
 }
 
 body {

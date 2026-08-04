@@ -242,6 +242,44 @@ Additional edits:
 
 ---
 
+## 9. Cursor glow — `app/modules/cursor-glow.tsx` (new)
+
+A soft Carolina-blue light that trails the pointer, lighting the Vanta waves as it moves. The **native cursor is preserved** — this augments the pointer rather than replacing it.
+
+### Why not a replacement cursor
+
+A rotating custom cursor was considered and rejected. Replacing the pointer requires `document.body.style.cursor = "none"`, which removes the I-beam over selectable text (including the email address) and the hand over every link and button. The site's primary conversions are the `Resume ↗` and `Get in touch` buttons; removing their hover affordance works against the page's purpose. Vanta also already runs `mouseControls: true`, so a second pointer-driven effect competes for the same gesture.
+
+### Implementation
+
+- A single `position: fixed` div: a `radial-gradient` from `rgba(75,156,211,0.18)` to transparent, ~320px square, `blur(60px)`, `pointer-events: none`
+- Position driven by two `useMotionValue`s piped through `useSpring` (`stiffness: 200, damping: 30, mass: 0.5`) so the glow lags the cursor by roughly 80ms
+- `mousemove` listener throttled with a single in-flight `requestAnimationFrame`; the handler only writes motion values, never React state, so it triggers no re-renders
+- `mix-blend-mode: plus-lighter` so it adds light to the dark background instead of painting a flat blue disc
+
+### Layering
+
+Renders at `z-[2]` — above the Vanta canvas (`z-0`) and the scroll-dim overlay (`z-[1]`), but **below** all content (`z-10`).
+
+Consequence: the glow is occluded by the opaque section cards, so it reads in the open areas — the hero, the gutters, and the space between sections. This is deliberate. Placing it above content would require blending over body text, which risks washing out paragraphs at exactly the moment the reader's cursor is near them.
+
+### Gating
+
+The component returns `null` unless **both** hold, checked inside `useEffect` so SSR and hydration stay consistent:
+
+- `window.matchMedia('(pointer: fine)').matches` — no mount on touch/coarse pointers
+- `!window.matchMedia('(prefers-reduced-motion: reduce)').matches`
+
+Cleanup removes the listener and cancels any pending `requestAnimationFrame`.
+
+### Dependencies
+
+**None added.** `framer-motion@^12.22.0` is already a dependency and exports `motion`, `useMotionValue`, and `useSpring`. The `motion` package is the same library under its post-rebrand name — installing it alongside framer-motion v12 would ship two copies of the same code. Imports come from `framer-motion`, matching every other file in the project.
+
+Rendered in `page.tsx` alongside the other fixed background layers.
+
+---
+
 ## Files touched
 
 | File | Change |
@@ -251,8 +289,9 @@ Additional edits:
 | `app/modules/navbar.tsx` | Transparent bar, scrim, spaced wordmark, persistent Resume ↗ CTA |
 | `app/modules/tech-icon.tsx` | **New** — hover/focus tooltip component |
 | `app/modules/footer.tsx` | **New** — footer with social buttons |
+| `app/modules/cursor-glow.tsx` | **New** — spring-trailed pointer glow, gated to fine pointers |
 | `app/modules/chatbot.tsx` | Correct stale facts, add Praxis |
-| `app/page.tsx` | Timeline rewrite, project card rewrite + Praxis, tech grid additions, hero CTA, resume paths, render `<Footer />` |
+| `app/page.tsx` | Timeline rewrite, project card rewrite + Praxis, tech grid additions, hero CTA, resume paths, render `<Footer />` and `<CursorGlow />` |
 | `README.md` | Update the "What's working" and file-structure sections |
 
 `app/page.tsx` is already at 477 lines and grows with this work. Extracting the timeline and project card into small presentational components under `app/modules/` — each taking a typed props object and driven by a local data array — keeps the page file readable and each unit independently understandable. This is a targeted improvement to code being edited anyway, not a general refactor; the About, Hero, and Resume sections stay inline.
@@ -272,3 +311,6 @@ No test suite exists in this project. Verification is manual against `npm run de
 7. `Get in touch` and all footer mail links open `mailto:abpatel1@unc.edu`
 8. No occurrence of `Inter` remains in the codebase
 9. Layout holds at 375px, 768px, and 1440px with no horizontal overflow
+10. Cursor glow trails the pointer in open areas; the **native cursor is still visible** — I-beam over the About paragraphs, hand over every link and button
+11. Cursor glow does not mount under emulated touch, nor with `prefers-reduced-motion: reduce` forced in DevTools
+12. `package.json` gains no new dependency; `motion` is absent from the lockfile

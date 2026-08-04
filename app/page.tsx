@@ -15,6 +15,7 @@ import Chatbot from './modules/chatbot';
 import CursorGlow from './modules/cursor-glow';
 import ExperienceTimeline from './modules/experience-timeline';
 import Projects from './modules/projects';
+import Footer from './modules/footer';
 import { RESUME_PATH, SOCIALS } from './lib/site';
 
 export default function PortfolioLanding() {
@@ -288,6 +289,8 @@ useEffect(() => {
           </div>
         </div>
       </section>
+
+      <Footer />
 
       {/* Chatbot floats over everything */}
       <Chatbot />

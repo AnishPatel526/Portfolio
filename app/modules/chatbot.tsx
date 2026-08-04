@@ -7,19 +7,19 @@ import { FaCommentDots, FaTimes, FaArrowLeft } from 'react-icons/fa';
 const questions = [
   {
     q: "Where did Anish intern last summer?",
-    a: "Sports Media Inc. as a Software Engineering Intern. He built a token based authentication system in Python and Java that boosted login success by 30%, cut page load times by 1.2 seconds, and shipped features to over 5,000 accounts!!"
+    a: "apexanalytix as an Application Development Intern. He built a QA automation suite in Python and Playwright that cut a 2 hour manual regression cycle down to 17 minutes, adapted it across 5 Fortune 500 client portals, and scaled it to over 200 employees!!"
   },
   {
     q: "What is Anish working on right now?",
-    a: "He is building multiple projects! One of which Karvbill, an AI tool that audits medical bills and surfaces pricing errors. He is also recruiting for summer 2026 software engineering internships and grinding LeetCode in Python and Java."
+    a: "He is building multiple projects! Praxis, an AI native incident response pipeline that auto triages server crashes and drafts its own GitLab fixes, and KarvBill, an AI tool that audits medical bills and surfaces pricing errors. He is also grinding LeetCode in Python and Java."
   },
   {
     q: "What does Anish study?",
-    a: "Computer Science and Statistics at UNC Chapel Hill, class of 2027. GPA 3.75. Three time Dean's List."
+    a: "Computer Science and Statistics and Analytics at UNC Chapel Hill, class of 2028. GPA 3.7. Three time Dean's List."
   },
   {
     q: "What languages and tools does he use?",
-    a: "Python, Java, C, C++, JavaScript, TypeScript, SQL, and Go. Comfortable with React, Node.js, Flask, Docker, AWS, Git, and the standard data stack of Pandas, NumPy, scikit learn, and PyTorch."
+    a: "Python, Java, Swift, C, C++, JavaScript, TypeScript, SQL, and Go. Comfortable with React, Node.js, Express, Vite, Flask, Playwright, Docker, AWS, Google Vertex AI, Git, and the standard data stack of Pandas, scikit learn, and PyTorch."
   },
   {
     q: "What does Anish do for fun?",

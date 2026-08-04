@@ -7,7 +7,7 @@ import {
   FaGitAlt, FaHtml5, FaCss3Alt
 } from 'react-icons/fa';
 import {
-  SiPostgresql, SiTypescript, SiJavascript
+  SiPostgresql, SiTypescript, SiJavascript, SiGo, SiSwift, SiPytorch
 } from 'react-icons/si';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -15,7 +15,7 @@ import Chatbot from './modules/chatbot';
 import CursorGlow from './modules/cursor-glow';
 import ExperienceTimeline from './modules/experience-timeline';
 import Projects from './modules/projects';
-import { RESUME_PATH } from './lib/site';
+import { RESUME_PATH, SOCIALS } from './lib/site';
 
 export default function PortfolioLanding() {
   const vantaRef = useRef<HTMLDivElement | null>(null);
@@ -114,7 +114,7 @@ useEffect(() => {
             </p>
             <div className="mt-6 flex justify-center lg:justify-start gap-5">
               <a
-                href="https://github.com/AnishPatel526"
+                href={SOCIALS.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -122,23 +122,29 @@ useEffect(() => {
                 <FaGithub className="text-white hover:text-[#4B9CD3] h-7 w-7 transition-colors" />
               </a>
               <a
-                href="https://www.linkedin.com/in/anish-patel1/"
+                href={SOCIALS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="text-white hover:text-[#4B9CD3] h-7 w-7 transition-colors" />
               </a>
-              <a href="mailto:abpatel1@unc.edu" aria-label="Email">
+              <a href={SOCIALS.email} aria-label="Email">
                 <FaEnvelope className="text-white hover:text-[#4B9CD3] h-7 w-7 transition-colors" />
               </a>
             </div>
-            <div className="mt-10">
+            <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
               <a
                 href="#experiences"
-                className="inline-block rounded-md border border-[#4B9CD3] px-5 py-2.5 text-lg font-bold text-[#4B9CD3] hover:bg-[#4B9CD3] hover:text-white transition-colors"
+                className="inline-block rounded-md border border-[#4B9CD3] px-5 py-2.5 font-display text-lg font-bold text-[#4B9CD3] transition-colors hover:bg-[#4B9CD3] hover:text-white"
               >
                 View my work ↓
+              </a>
+              <a
+                href={SOCIALS.email}
+                className="inline-block rounded-md border border-[#4B9CD3] bg-[#4B9CD3] px-5 py-2.5 font-display text-lg font-bold text-white transition-colors hover:border-[#5FAEE0] hover:bg-[#5FAEE0]"
+              >
+                Get in touch
               </a>
             </div>
           </div>
@@ -204,6 +210,9 @@ useEffect(() => {
         ['Git', FaGitAlt, 'text-orange-500'],
         ['HTML', FaHtml5, 'text-orange-600'],
         ['CSS', FaCss3Alt, 'text-blue-400'],
+        ['Go', SiGo, 'text-cyan-400'],
+        ['Swift', SiSwift, 'text-orange-500'],
+        ['PyTorch', SiPytorch, 'text-orange-600'],
       ] as const).map(([name, Icon, color]) => (
         <div
           key={name}

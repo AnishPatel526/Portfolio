@@ -7,13 +7,14 @@ import {
   FaGitAlt, FaHtml5, FaCss3Alt
 } from 'react-icons/fa';
 import {
-  SiPandas, SiScikitlearn, SiPostgresql, SiFlask, SiTypescript, SiJavascript
+  SiPostgresql, SiTypescript, SiJavascript
 } from 'react-icons/si';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Chatbot from './modules/chatbot';
 import CursorGlow from './modules/cursor-glow';
 import ExperienceTimeline from './modules/experience-timeline';
+import Projects from './modules/projects';
 import { RESUME_PATH } from './lib/site';
 
 export default function PortfolioLanding() {
@@ -245,153 +246,7 @@ useEffect(() => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <h2 className="font-display text-4xl lg:text-5xl font-bold mb-12 text-center">Featured Projects</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-              {/* KarvBill */}
-              <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
-                <div>
-                  <h3 className="text-xl font-bold mb-3">KarvBill</h3>
-                  <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
-                    AI medical bill auditor. End to end pipeline that ingests itemized bills and surfaces pricing anomalies, duplicate charges, and overbilling.
-                  </p>
-                  <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
-                    <li>Built with Python, AWS Textract, Pandas, scikit learn</li>
-                    <li>Hosted on AWS Elastic Beanstalk with S3 backed storage</li>
-                    <li>Combines ML based and rule driven validation checks</li>
-                    <li>Handles multiple claim formats end to end</li>
-                  </ul>
-                </div>
-                <div className="mt-6">
-                  <div className="flex gap-3 mb-4">
-                    <FaPython className="h-6 w-6 text-blue-400" title="Python" />
-                    <FaAws className="h-6 w-6 text-orange-400" title="AWS" />
-                    <SiPandas className="h-6 w-6 text-white" title="Pandas" />
-                    <SiScikitlearn className="h-6 w-6 text-orange-500" title="scikit-learn" />
-                    <FaDocker className="h-6 w-6 text-blue-500" title="Docker" />
-                  </div>
-                  <div className="flex gap-4 text-[#4B9CD3]">
-                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" title="GitHub Repo" aria-label="KarvBill GitHub">
-                      <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* SideLine */}
-              <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
-                <div>
-                  <h3 className="text-xl font-bold mb-3">SideLine</h3>
-                  <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
-                    Real time NBA analytics dashboard. Aggregates live game data and betting odds across 3 plus APIs and surfaces favorable prop bet opportunities.
-                  </p>
-                  <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
-                    <li>Built with React, Node.js, WebSockets, Python, PostgreSQL</li>
-                    <li>Python pipeline normalizes data across 1,200 plus games</li>
-                    <li>Prop bet screener cross references live performance against book lines</li>
-                    <li>Tracks line movement in real time</li>
-                  </ul>
-                </div>
-                <div className="mt-6">
-                  <div className="flex gap-3 mb-4">
-                    <FaReact className="h-6 w-6 text-cyan-400" title="React" />
-                    <FaNodeJs className="h-6 w-6 text-green-500" title="Node.js" />
-                    <FaPython className="h-6 w-6 text-blue-400" title="Python" />
-                    <SiPostgresql className="h-6 w-6 text-blue-300" title="PostgreSQL" />
-                  </div>
-                  <div className="flex gap-4 text-[#4B9CD3]">
-                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" title="GitHub Repo" aria-label="SideLine GitHub">
-                      <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* CodeScan */}
-              <div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
-                <div>
-                  <h3 className="text-xl font-bold mb-3">CodeScan</h3>
-                  <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
-                    Full stack AI code review tool. Analyzes code via the OpenAI API and surfaces bugs, security issues, and style improvements across 10 plus languages.
-                  </p>
-                  <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
-                    <li>Built with Python, Flask, React, OpenAI API</li>
-                    <li>REST API backend with structured feedback rendering</li>
-                    <li>Syntax highlighted input across 10 plus languages</li>
-                    <li>Real time analysis on submission</li>
-                  </ul>
-                </div>
-                <div className="mt-6">
-                  <div className="flex gap-3 mb-4">
-                    <FaPython className="h-6 w-6 text-blue-400" title="Python" />
-                    <SiFlask className="h-6 w-6 text-white" title="Flask" />
-                    <FaReact className="h-6 w-6 text-cyan-400" title="React" />
-                    <SiTypescript className="h-6 w-6 text-blue-500" title="TypeScript" />
-                  </div>
-                  <div className="flex gap-4 text-[#4B9CD3]">
-                    <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" title="GitHub Repo" aria-label="CodeScan GitHub">
-                      <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* FairShare */}
-<div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
-  <div>
-    <h3 className="text-xl font-bold mb-3">FairShare</h3>
-    <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
-      Full stack platform that calculates optimized payment splits across any group size. Eliminates manual balance tracking with an O(n) debt resolution algorithm.
-    </p>
-    <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
-      <li>Built with React, Node.js, Express, REST APIs</li>
-      <li>O(n) debt resolution algorithm for instant payment splits</li>
-      <li>Modular React interface with 10 plus reusable components</li>
-      <li>Standardized UI consistency across all devices</li>
-    </ul>
-  </div>
-  <div className="mt-6">
-    <div className="flex gap-3 mb-4">
-      <FaReact className="h-6 w-6 text-cyan-400" title="React" />
-      <FaNodeJs className="h-6 w-6 text-green-500" title="Node.js" />
-      <SiJavascript className="h-6 w-6 text-yellow-400" title="JavaScript" />
-    </div>
-    <div className="flex gap-4 text-[#4B9CD3]">
-      <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="FairShare GitHub">
-        <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
-      </a>
-    </div>
-  </div>
-</div>
-
-{/* SyncBoard */}
-<div className="bg-[#15171B] border border-[#262A30] rounded-2xl p-6 flex flex-col justify-between min-h-[420px] hover:border-[#3A3F47] transition-colors">
-  <div>
-    <h3 className="text-xl font-bold mb-3">SyncBoard</h3>
-    <p className="text-[#A8ADB5] mb-4 text-sm leading-relaxed">
-      Real time collaborative task management platform. Reduced sync latency from seconds to milliseconds for concurrent users with WebSocket based updates.
-    </p>
-    <ul className="text-sm text-[#6B7079] list-disc pl-4 space-y-1.5">
-      <li>Built with React, Node.js, WebSockets, Google Calendar API</li>
-      <li>Real time updates across collaborative task management</li>
-      <li>Google Calendar API integration syncs 100 percent of deadlines</li>
-      <li>5 plus core collaboration features including shared notes</li>
-    </ul>
-  </div>
-  <div className="mt-6">
-    <div className="flex gap-3 mb-4">
-      <FaReact className="h-6 w-6 text-cyan-400" title="React" />
-      <FaNodeJs className="h-6 w-6 text-green-500" title="Node.js" />
-      <SiJavascript className="h-6 w-6 text-yellow-400" title="JavaScript" />
-    </div>
-    <div className="flex gap-4 text-[#4B9CD3]">
-      <a href="https://github.com/AnishPatel526" target="_blank" rel="noopener noreferrer" aria-label="SyncBoard GitHub">
-        <FaGithub className="h-6 w-6 hover:opacity-70 transition-opacity" />
-      </a>
-    </div>
-  </div>
-</div>
-
-            </div>
+            <Projects />
           </motion.div>
         </div>
       </section>

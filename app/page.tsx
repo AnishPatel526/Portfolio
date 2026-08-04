@@ -12,6 +12,7 @@ import {
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Chatbot from './modules/chatbot';
+import { RESUME_PATH } from './lib/site';
 
 export default function PortfolioLanding() {
   const vantaRef = useRef<HTMLDivElement | null>(null);
@@ -448,7 +449,7 @@ useEffect(() => {
             <div className="flex flex-col items-center justify-center text-center flex-1">
               <h2 className="font-display text-5xl font-bold mb-8">Resume</h2>
               <a
-                href="/AnishP_Resume.pdf"
+                href={RESUME_PATH}
                 download
                 className="inline-block rounded-md border border-[#4B9CD3] px-5 py-2.5 text-lg font-bold text-[#4B9CD3] hover:bg-[#4B9CD3] hover:text-white transition-colors"
               >
@@ -459,7 +460,7 @@ useEffect(() => {
             <div className="flex-1 w-full max-w-3xl">
               <div className="w-full h-[80vh] border border-[#262A30] rounded-md overflow-hidden bg-white">
                 <iframe
-                  src="/AnishP_Resume.pdf"
+                  src={RESUME_PATH}
                   className="w-full h-full"
                   title="Anish Patel Resume Preview"
                 />

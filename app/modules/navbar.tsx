@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { RESUME_PATH } from '../lib/site';
 
 const navigation = [
   { name: 'Home', href: '#home' },
@@ -22,7 +23,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navClass = 'flex items-center justify-between p-6 lg:px-8 bg-[#0A0B0D]/70 backdrop-blur-md border-b border-[#262A30] ' + (scrolled ? 'pointer-events-none' : '');
+  const navClass = 'flex items-center justify-between p-6 lg:px-8 bg-gradient-to-b from-black/40 via-black/10 to-transparent ' + (scrolled ? 'pointer-events-none' : '');
   const pillClass = 'absolute top-4 left-1/2 -translate-x-1/2 ' + (scrolled ? '' : 'pointer-events-none');
 
   return (
@@ -33,11 +34,21 @@ export default function Navbar() {
         className={navClass}
       >
         <div className="flex lg:flex-1">
-          <a href="#home" className="text-xl font-bold text-[#4B9CD3]">AnishPatel</a>
+          <a
+            href="#home"
+            className="font-display text-xl font-bold [text-shadow:0_1px_3px_rgb(0_0_0_/_0.6)]"
+          >
+            <span className="text-white">Anish</span>{' '}
+            <span className="text-[#4B9CD3]">Patel</span>
+          </a>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:mr-44 lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-base font-medium text-white hover:text-[#4B9CD3] transition-colors duration-200">
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-base font-medium text-white [text-shadow:0_1px_3px_rgb(0_0_0_/_0.6)] hover:text-[#4B9CD3] transition-colors duration-200"
+            >
               {item.name}
             </a>
           ))}
@@ -52,6 +63,16 @@ export default function Navbar() {
       >
         <PillNav />
       </motion.div>
+
+      {/* Sits outside <motion.nav> so it survives the scroll swap */}
+      <a
+        href={RESUME_PATH}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-5 right-6 lg:right-8 z-50 rounded-full border border-[#4B9CD3]/60 bg-[#0A0B0D]/60 px-4 py-2 font-display text-sm font-medium text-[#4B9CD3] backdrop-blur-md transition-colors hover:bg-[#4B9CD3] hover:text-white"
+      >
+        Open Resume ↗
+      </a>
     </header>
   );
 }

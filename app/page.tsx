@@ -12,6 +12,7 @@ import {
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Chatbot from './modules/chatbot';
+import CursorGlow from './modules/cursor-glow';
 import { RESUME_PATH } from './lib/site';
 
 export default function PortfolioLanding() {
@@ -94,6 +95,9 @@ useEffect(() => {
   style={{ background: '#0A0B0D', opacity: 'var(--bg-dim, 0)' }}
   aria-hidden="true"
 />
+
+{/* Pointer glow — above the background layers, below all content */}
+<CursorGlow />
 
       {/* Hero */}
       <main className="relative z-10 isolate px-6 lg:px-8">

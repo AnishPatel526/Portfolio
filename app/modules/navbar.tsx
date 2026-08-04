@@ -24,7 +24,9 @@ export default function Navbar() {
   }, []);
 
   const navClass = 'flex items-center justify-between p-6 lg:px-8 bg-gradient-to-b from-black/40 via-black/10 to-transparent ' + (scrolled ? 'pointer-events-none' : '');
-  const pillClass = 'absolute top-4 left-1/2 -translate-x-1/2 ' + (scrolled ? '' : 'pointer-events-none');
+  // Hidden below lg: the pill is wider than a phone viewport, and the top-bar
+  // links are lg-only too, so mobile keeps just the wordmark + Resume CTA.
+  const pillClass = 'hidden lg:block absolute top-4 left-1/2 -translate-x-1/2 ' + (scrolled ? '' : 'pointer-events-none');
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">

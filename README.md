@@ -1,4 +1,4 @@
-# Anish Patel — Portfolio
+# Anish Patel — Tech Portfolio
 
 Developer portfolio. Live at [anishpatel.xyz](https://anishpatel.xyz).
 
@@ -10,12 +10,3 @@ Developer portfolio. Live at [anishpatel.xyz](https://anishpatel.xyz).
 - Tailwind CSS 4
 - Framer Motion
 - Vanta.js / Three.js
-
-## Setup
-
-```bash
-npm install
-npm run dev
-```
-
-Open http://localhost:3000

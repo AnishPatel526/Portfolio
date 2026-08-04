@@ -13,6 +13,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Chatbot from './modules/chatbot';
 import CursorGlow from './modules/cursor-glow';
+import ExperienceTimeline from './modules/experience-timeline';
 import { RESUME_PATH } from './lib/site';
 
 export default function PortfolioLanding() {
@@ -229,57 +230,7 @@ useEffect(() => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <h2 className="font-display text-4xl lg:text-5xl font-bold mb-12 text-center">Featured Experiences</h2>
-            <div className="space-y-6">
-
-              {/* Sports Media Inc */}
-              <div className="flex flex-col lg:flex-row gap-8 bg-[#15171B] border border-[#262A30] p-8 rounded-2xl items-center">
-                <div className="flex-1 text-center lg:text-left">
-                  <h3 className="text-2xl font-bold">Sports Media Inc.</h3>
-                  <p className="text-lg italic text-[#A8ADB5] mt-1">Software Engineering Intern</p>
-                  <div className="mt-4 space-y-3 text-[#A8ADB5]">
-                    <p>- Built a token based authentication system in Python and Java that increased login success by 30% and reduced reported issues by 25%</p>
-                    <p>- Cut page load times by 1.2 seconds by optimizing API calls and shipping mobile first updates across the platform</p>
-                    <p>- Deployed features to over 5,000 accounts working with a team of 5 engineers in Agile sprints</p>
-                  </div>
-                </div>
-                <div className="w-48 h-32 rounded-lg bg-white p-3 flex items-center justify-center flex-shrink-0">
-  <img src="/sportsmedia.png" alt="Sports Media Inc." className="max-h-full max-w-full object-contain" />
-</div>
-              </div>
-
-              {/* NC A&T */}
-              <div className="flex flex-col lg:flex-row gap-8 bg-[#15171B] border border-[#262A30] p-8 rounded-2xl items-center">
-                <div className="flex-1 text-center lg:text-left">
-                  <h3 className="text-2xl font-bold">NC A&T State University</h3>
-                  <p className="text-lg italic text-[#A8ADB5] mt-1">Research Intern</p>
-                  <div className="mt-4 space-y-3 text-[#A8ADB5]">
-                    <p>- Achieved 95% classification accuracy detecting CAN bus cyberattacks across 5 ML models including Random Forest, KNN, SVM, and Isolation Forest</p>
-                    <p>- Boosted detection performance by 20% through feature engineering and cross validation pipelines</p>
-                    <p>- Co authored a peer reviewed paper presented at the 2024 icABCD Conference on automotive cybersecurity</p>
-                  </div>
-                </div>
-                <div className="w-48 h-32 rounded-lg bg-white p-3 flex items-center justify-center flex-shrink-0">
-  <img src="/ncat.png" alt="NC A&T State University" className="max-h-full max-w-full object-contain" />
-</div>
-              </div>
-
-              {/* UNC Dentistry */}
-              <div className="flex flex-col lg:flex-row gap-8 bg-[#15171B] border border-[#262A30] p-8 rounded-2xl items-center">
-                <div className="flex-1 text-center lg:text-left">
-                  <h3 className="text-2xl font-bold">UNC School of Dentistry</h3>
-                  <p className="text-lg italic text-[#A8ADB5] mt-1">Computer Support Technician</p>
-                  <div className="mt-4 space-y-3 text-[#A8ADB5]">
-                    <p>- 90% first contact resolution rate across 150 plus faculty, staff, and students</p>
-                    <p>- Reduced new user downtime by 35% by completing 100 plus hardware and software setups</p>
-                    <p>- Led onboarding sessions for 50+ users on personal and university issued devices</p>
-                  </div>
-                </div>
-                <div className="w-48 h-32 rounded-lg bg-[#4B9CD3] p-3 flex items-center justify-center flex-shrink-0">
-  <img src="/uncdentistry.jpg" alt="UNC School of Dentistry" className="max-h-full max-w-full object-contain rounded" />
-</div>
-              </div>
-
-            </div>
+            <ExperienceTimeline />
           </motion.div>
         </div>
       </section>
